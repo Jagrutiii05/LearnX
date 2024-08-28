@@ -2,6 +2,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
+import userRoute from "./routes/userRoute.js";
 import connectDB from "./utils/mongo.js";
 
 const app = express();
@@ -21,6 +22,9 @@ const corsOpt = {
 app.use(cors(corsOpt))
 
 const port = process.env.PORT || 3000
+
+//API routes
+app.use('/user', userRoute);
 
 app.listen(port, (req, res) => {
     connectDB();
