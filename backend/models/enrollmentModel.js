@@ -14,7 +14,7 @@ const enrollmentSchema = new mongoose.Schema({
     status: {
         type: String,
         required: true,
-        enum: ['Enrolled', 'Not Enrolled'],
+        enum: ['Enrolled', 'Not Enrolled', 'Verifying Payment'],
         default: 'Not Enrolled'
     }
 }, {timestamps: true});

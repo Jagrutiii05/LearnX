@@ -9,9 +9,9 @@ const courseSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    pre_requisites: {
+    pre_requisites: [{
         type: String
-    },
+    }],
     skills_gain: {
         type: String,
         required: true
@@ -33,10 +33,10 @@ const courseSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.Decimal128,
         required: true
     },
-    enrollment: {
+    enrollments: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Enrollment'
-    }
+    }]
 }, {timestamps: true});
 
 export const Course = mongoose.model("Course", courseSchema);

@@ -2,6 +2,8 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
+import courseRoute from "./routes/courseRoute.js";
+import enrollRoute from "./routes/enrollRoute.js";
 import userRoute from "./routes/userRoute.js";
 import connectDB from "./utils/mongo.js";
 
@@ -25,6 +27,8 @@ const port = process.env.PORT || 3000
 
 //API routes
 app.use('/user', userRoute);
+app.use('/learn', courseRoute);
+app.use('/enrollments', enrollRoute);
 
 app.listen(port, (req, res) => {
     connectDB();
