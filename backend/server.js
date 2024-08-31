@@ -17,7 +17,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
 const corsOpt = {
-    origin: 'http//localhost:5173',
+    origin: 'http://localhost:5173',
     credentials: true
 }
 // It decides who gets in (or rather, which domains are allowed to talk to your server)

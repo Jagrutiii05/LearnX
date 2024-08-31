@@ -17,8 +17,8 @@ const Signup = () => {
     // Get data
     const [input, setInput] = useState({
         Name: "",
-        email: "",
-        password: "",
+        Email: "",
+        Password: "",
         role: "",
         file: ""
     });
@@ -41,8 +41,8 @@ const Signup = () => {
         e.preventDefault();
         const formData = new FormData();    //formdata object
         formData.append("Name", input.Name);
-        formData.append("email", input.email);
-        formData.append("password", input.password);
+        formData.append("Email", input.Email);
+        formData.append("Password", input.Password);
         formData.append("role", input.role);
         if (input.file) {
             formData.append("file", input.file);
@@ -51,7 +51,7 @@ const Signup = () => {
         try {
             dispatch(setLoading(true));
             const res = await axios.post(`${USER_API_END_POINT}/register`, formData, {
-                headers: { 'Content-Type': "multipart/form-data" },
+                headers: { 'Content-Type': "text/plain" },
                 withCredentials: true,
             });
             if (res.data.success) {
@@ -79,32 +79,38 @@ const Signup = () => {
                 <form onSubmit={submitHandler} className='w-1/2 border border-gray-200 rounded-md p-4 my-10'>
                     <h1 className='font-bold text-xl mb-5'>Sign Up</h1>
                     <div className='my-2'>
-                        <Label>Name</Label>
+                        <Label htmlFor="nameInput">Name</Label>
                         <Input
+                            id="nameInput"
                             type="text"
                             value={input.Name}
                             name="Name"
+                            autoComplete="name"
                             onChange={changeEventHandler}
                             placeholder="Jagruti Piprade"
                         />
                     </div>
                     <div className='my-2'>
-                        <Label>Email</Label>
+                        <Label htmlFor="emailInput">Email</Label>
                         <Input
-                            type="email"
-                            value={input.email}
-                            name="email"
+                            id="emailInput"
+                            type="Email"
+                            value={input.Email}
+                            name="Email"
+                            autoComplete="email"
                             onChange={changeEventHandler}
                             placeholder="jagruti@gmail.com"
                         />
                     </div>
                     
                     <div className='my-2'>
-                        <Label>Password</Label>
+                        <Label htmlFor="passwordInput">Password</Label>
                         <Input
-                            type="password"
-                            value={input.password}
-                            name="password"
+                            id="passwordInput"
+                            type="Password"
+                            value={input.Password}
+                            name="Password"
+                            autoComplete="new-password"
                             onChange={changeEventHandler}
                             placeholder="Jagruti@123"
                         />
@@ -115,6 +121,7 @@ const Signup = () => {
                         <RadioGroup className="flex items-center gap-4 my-5">
                             <div className="flex items-center space-x-2">
                                 <Input
+                                    id="learnerRole"
                                     type="radio"
                                     name="role"
                                     value="Learner"
@@ -122,25 +129,27 @@ const Signup = () => {
                                     onChange={changeEventHandler}
                                     className="cursor-pointer"
                                 />
-                                <Label htmlFor="r1">Learner</Label>
+                                <Label htmlFor="learnerRole">Learner</Label>
                             </div>
                             <div className="flex items-center space-x-2">
                                 <Input
+                                    id="instructorRole"
                                     type="radio"
                                     name="role"
                                     value="Instructor"
-                                    checked={input.role === 'recruiter'}
+                                    checked={input.role === 'Instructor'}
                                     onChange={changeEventHandler}
                                     className="cursor-pointer"
                                 />
-                                <Label htmlFor="r2">Recruiter</Label>
+                                <Label htmlFor="instructorRole">Instructor</Label>
                             </div>
                         </RadioGroup>
 
                         {/* Profile Photo */}
                         <div className='flex items-center gap-2'>
-                            <Label>Profile</Label>
+                            <Label htmlFor="profilePhoto">Profile</Label>
                             <Input
+                                id="profilePhoto"
                                 accept="image/*"
                                 type="file"
                                 onChange={changeFileHandler}
