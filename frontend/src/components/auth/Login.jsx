@@ -15,8 +15,8 @@ import { RadioGroup } from '../ui/radio-group'
 const Login = () => {
     // Get data
     const [input, setInput] = useState({
-        email: "",
-        password: "",
+        Email: "",
+        Password: "",
         role: "",
     });
     const { loading,user } = useSelector(store => store.auth);
@@ -63,22 +63,24 @@ const Login = () => {
                 <form onSubmit={submitHandler} className='w-1/2 border border-gray-200 rounded-md p-4 my-10'>
                     <h1 className='font-bold text-xl mb-5'>Login</h1>
                     <div className='my-2'>
-                        <Label>Email</Label>
+                        <Label htmlFor="emailInput">Email</Label>
                         <Input
-                            type="email"
-                            value={input.email}
-                            name="email"
+                            id="emailInput"
+                            type="Email"
+                            value={input.Email}
+                            name="Email"
                             onChange={changeEventHandler}
                             placeholder="jagruti@gmail.com"
                         />
                     </div>
 
                     <div className='my-2'>
-                        <Label>Password</Label>
+                        <Label htmlFor="passwordInput">Password</Label>
                         <Input
-                            type="password"
-                            value={input.password}
-                            name="password"
+                            id="passwordInput"
+                            type="Password"
+                            value={input.Password}
+                            name="Password"
                             onChange={changeEventHandler}
                             placeholder="Jagruti@123"
                         />
@@ -87,6 +89,7 @@ const Login = () => {
                         <RadioGroup className="flex items-center gap-4 my-5">
                             <div className="flex items-center space-x-2">
                                 <Input
+                                    id="learnerRole"
                                     type="radio"
                                     name="role"
                                     value="Learner"
@@ -94,10 +97,11 @@ const Login = () => {
                                     onChange={changeEventHandler}
                                     className="cursor-pointer"
                                 />
-                                <Label htmlFor="r1">Learner</Label>
+                                <Label htmlFor="learnerRole">Learner</Label>
                             </div>
                             <div className="flex items-center space-x-2">
                                 <Input
+                                    id="Instructor"
                                     type="radio"
                                     name="role"
                                     value="Instructor"
@@ -105,7 +109,7 @@ const Login = () => {
                                     onChange={changeEventHandler}
                                     className="cursor-pointer"
                                 />
-                                <Label htmlFor="r2">Instructor</Label>
+                                <Label htmlFor="Instructor">Instructor</Label>
                             </div>
                         </RadioGroup>
                     </div>

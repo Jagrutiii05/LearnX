@@ -51,7 +51,7 @@ const Signup = () => {
         try {
             dispatch(setLoading(true));
             const res = await axios.post(`${USER_API_END_POINT}/register`, formData, {
-                headers: { 'Content-Type': "text/plain" },
+                headers: { 'Content-Type': "application/json" },
                 withCredentials: true,
             });
             if (res.data.success) {
